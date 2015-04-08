@@ -1,0 +1,187 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsmath}
+\usepackage{amsrefs}
+\usepackage{mathpazo}
+\usepackage{amsfonts}
+%\usepackage{latexsym}
+\usepackage{hyperref}
+\usepackage{ragged2e}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{url}
+
+\graphicspath{../}
+
+\pagestyle{plain} 
+\textwidth = 6.5 in \textheight = 9 in
+\oddsidemargin = 0 in \evensidemargin = 0 in 
+\topmargin = 0in
+\headheight = 0.0 in \headsep = 0.0 in
+\parskip = .05in
+\parindent = 0.0in
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example}{Example}
+\newtheorem{computation}{Computation}
+\newtheorem{conjecture}{Conjecture}
+
+\newcommand \m[1]{\; (\mathrm{mod\ } #1)}
+\newcommand \zm[1]{\mathbb{Z}_{#1}}
+\newcommand \R{\mathbb{R}}
+\newcommand \Z{\mathbb{Z}}
+\newcommand \C{\mathbb{C}}
+\newcommand \TT{\mathbf{T}}
+\newcommand \NN{\mathbf{N}}
+\newcommand \BB{\mathbf{B}}
+
+%%% A way to make notes to yourself %%% no notes should appear in your submission
+\newcommand{\note}[1]{%
+  %\mbox
+  \begin{center}
+  \framebox{%
+  \begin{minipage}{.85\textwidth}{\color{blue}{\small #1}}
+  \end{minipage}% 
+  }
+  \end{center} %
+}
+
+\title{2015 Collaborative Research Project \\ Georgia Tech} 
+
+\author{Ryan Dickmann and Carter Johns \\ Stephen Gillen and Yaoyuan Bai}
+
+\begin{document}
+\maketitle
+Each team is required to submit both  a Project Summary and a Full Report.  Detailed specifications are described below.   You will be asked to submit both the .tex file and the .pdf using the naming scheme {\tt SchoolName-CRP.tex} and {\tt SchoolName-CRP.pdf}.  Schools with multiple teams can designate themselves A and B.
+
+ As a general note, please refrain from using non-standard \LaTeX packages.  If a team is new to typesetting in \LaTeX, we encourage uses to use the sharelatex.com which has an online compiler and a straightforward introduction to typesetting in \LaTeX.
+
+\section{Project Summary}
+{\large \bf Role of Collaboration:} 
+In one paragraph describe the role your team played in collaborating with others in the larger project.
+
+Our team did not directly work with any other team specifically. Our collaboration consisted mainly of sharing interesting results that we found in the literature and following the wiki to see what other teams were posting. However, due to our team's lack of experience with the prerequisite algebraic geometry, we did need some support from more experienced teams such as the Zerm Team from Harvey Mudd, particularly at the beginning of the project.
+
+{\large \bf Summary of Contribution} 
+Provide a non-technical summary of your findings. Include specific references to results and examples described in the Full Report.  The CRP-Team will only read the Full Report to examine findings which are clearly presented in this summary document. This project summary must fit onto a single page. 
+
+Due to the difficulty of learning the required algebraic geometry within a reasonable amount of time, we were ultimately unable to derive anything for general $n$. However, for the $n=4$ case, we showed that any metric can be written as the maximum of at most two tree metrics (Theorem 1), so that every metric on 4 leaves has tree rank $\leq 2$.
+\newpage
+\section{Full Report}
+The Full Report highlights work that significantly furthers the project. The report need not be a complete paper. Instead it should include the details of your team's specific contributions to the project.  
+
+When submitting your report use the headings described below.  Many valuable submissions will leave several of these sections  blank. Indicate the author of all new findings. All work should be accurate,  documented and clearly presented. 
+
+{\large \bf Lemmas and Theorems} 
+ Each lemma or theorem should be accompanied by a clear and concise proof. Ensure that the terms are defined clearly in the Definition section of this report. You may include a brief statement about the relevance of these results, but you need not link all results together in one unified story.
+
+\begin{lemma}[Nonnegativity Lemma]
+Suppose D is a metric such that $d_{13}+d_{24} \geq d_{14}+d_{23} \geq d_{12}+d_{34}$. Then $d_{14}+d_{23}-d_{13} \geq 0$ and $d_{14}+d_{23}-d_{24} \geq 0$.
+\end{lemma}
+\begin{proof} The triangle inequality implies $d_{12}+d_{23} \geq d_{13}$ and $d_{14}+d_{34} \geq d_{13}$. Adding these two inequalities gives
+$d_{12}+d_{34}+d_{14}+d_{23} \geq 2d_{13}$. From $d_{14}+d_{23} \geq d_{12}+d_{34}$ we now have
+$2d_{14}+2d_{23} \geq 2d_{13}$, from which $d_{14}+d_{23}-d_{13} \geq 0$ follows immediately.
+The argument for $d_{14}+d_{23}-d_{24} \geq 0$ is exactly symmetric.
+\end{proof}
+
+\begin{theorem}[Rank of a Metric on 4 Leaves]
+Suppose $D = \begin{bmatrix} 0&d_{12}&d_{13}&d_{14} \\ d_{12}&0&d_{23}&d_{24} \\ d_{13}&d_{23}&0&d_{34} \\ d_{14}&d_{24}&d_{34}&0 \end{bmatrix}$ is a metric on 4 leaves (a 4-by-4 symmetric matrix D with nonnegative entries, with zeros on the diagonal, that satisfies the triangle inequality $D \odot D = D$). Then if D is not itself a tree metric, it can be written as the maximum of two tree metrics. 
+\end{theorem}
+\begin{proof} Without loss of generality, assume that $d_{13}+d_{24} \geq d_{14}+d_{23} \geq d_{12}+d_{34}$. (If not, simply re-label the leaves.) I claim that such a $D$ can be written as the maximum of $D_{1} = \begin{bmatrix} 0&d_{12}&d_{13}&d_{14} \\ d_{12}&0&d_{23}&d_{14}+d_{23}-d_{13} \\ d_{13}&d_{23}&0&d_{34} \\ d_{14}&d_{14}+d_{23}-d_{13}&d_{34}&0 \end{bmatrix}$ and $D_{2} = \begin{bmatrix} 0&d_{12}&d_{14}+d_{23}-d_{24}&d_{14} \\ d_{12}&0&d_{23}&d_{24} \\ d_{14}+d_{23}-d_{24}&d_{23}&0&d_{34} \\ d_{14}&d_{24}&d_{34}&0 \end{bmatrix}$ and that $D_{1}$ and $D_{2}$ are both tree metrics.
+
+Since $d_{13}+d_{24} \geq d_{14}+d_{23}$ by assumption, we have $d_{13} \geq d_{14}+d_{23}-d_{24}$ and $d_{24} \geq d_{14}+d_{23}-d_{13}$, so $D$ is indeed the maximum of $D_{1}$ and $D_{2}$. By Lemma 1, $d_{14}+d_{23}-d_{13} \geq 0$ and $d_{14}+d_{23}-d_{24} \geq 0$, so $D_{1}$ and $D_{2}$ have nonnegative entries. Clearly $D_{1}$ and $D_{2}$ are symmetric matrices with zeros on the diagonal, so all that is left to show is that $D_{1}$ and $D_{2}$ are tree metrics. I will argue for $D_{1}$; the argument for $D_{2}$ is symmetric.
+
+Note that since $d_{13}+(d_{14}+d_{23}-d_{13}) = d_{14}+d_{23} \geq d_{12}+d_{34}$, $D_{1}$ satisfies the four-point condition. So if $D_{1}$ is a metric (satisfies the triangle inequality), then it is a tree metric. To simplify notation, let $a_{ij}$ (for $i < j$) denote the entry of $D_{1}$ in the $i^{th}$ row and $j^{th}$ column. We need not check the triangle inequalities that do not involve $a_{24}$, since they were, by assumption, already satisfied in D, and none of the other entries above the diagonal changed. There are six triangle inequalities that involve $a_{24}$:
+
+$a_{12} + a_{14} \geq a_{24}$
+
+$a_{23} + a_{34} \geq a_{24}$
+
+$a_{12} + a_{24} \geq a_{14}$
+
+$a_{34} + a_{24} \geq a_{23}$
+
+$a_{14} + a_{24} \geq a_{12}$
+
+$a_{23} + a_{24} \geq a_{34}$
+
+Substituting the values of each $a_{ij}$ in terms of the entries of D:
+
+$d_{12} + d_{14} \geq d_{14}+d_{23}-d_{13}$
+
+$d_{23} + d_{34} \geq d_{14}+d_{23}-d_{13}$
+
+$d_{12} + d_{14}+d_{23}-d_{13} \geq d_{14}$
+
+$d_{34} + d_{14}+d_{23}-d_{13} \geq d_{23}$
+
+$d_{14} + d_{14}+d_{23}-d_{13} \geq d_{12}$
+
+$d_{23} + d_{14}+d_{23}-d_{13} \geq d_{34}$
+
+The first four inequalities are equivalent to
+
+$d_{12}+d_{13} \geq d_{23}$,
+
+$d_{13}+d_{34} \geq d_{14}$,
+
+$d_{12}+d_{23} \geq d_{13}$, and
+
+$d_{14}+d_{34} \geq d_{13}$,
+
+which all hold by the triangle inequality in D.
+
+The last two inequalities are somewhat trickier: Since $d_{14}+d_{23} \geq d_{12}+d_{34}$, we can write
+
+$d_{14} + d_{14}+d_{23}-d_{13} \geq d_{14} + d_{12} + d_{34} - d_{13} \geq d_{13} + d_{12} - d_{13} = d_{12}$,
+
+where the second $\geq$ follows from the triangle inequality $d_{14} + d_{34} \geq d_{13}$ in D. The argument for the final triangle inequality of $D_{1}$ is symmetric:
+
+$d_{23} + d_{14}+d_{23}-d_{13} \geq d_{23}+d_{12} + d_{34} - d_{13} \geq d_{13} + d_{34} - d_{13} = d_{13}$.
+
+So $D_{1}$ and similarly $D_{2}$ are tree metrics.
+\end{proof}
+
+{\large \bf References} 
+ Include  references for all work cited in your report. Use the amsrefs citation style below. Cite in text, e.g., the main article \cite{speyer2009tropical}, and also include a complete reference section. See \url{ftp://ftp.ams.org/pub/tex/amsrefs/amsrdoc.pdf} for a citation guide.
+
+\begin{bibdiv}
+\begin{biblist}
+
+\bib{speyer2009tropical}{article}{
+ title={Tropical Mathematics},
+ author={David Speyer and Bernd Sturmfels},
+ journal={Mathematics Magazine},
+ pages={163--173},
+ year={2009},
+ publisher={JSTOR}
+}
+
+\bib{pachteralgebraic}{book}{
+ title={Algebraic Statistics for Computational Biology},
+ author={Lior Pachter and Bernd Sturmfels},
+ pages={45--132},
+ year={2005}
+}
+
+
+\end{biblist}
+\end{bibdiv}
+
+{\large \bf What we learned} 
+IN this section include a brief summary about what you learned by participating in this project.  This could include mathematical content, but also research skills, networking skills or any other mathematical abilities you developed during the past month.
+
+This was a difficult project because we had to learn a lot of material in a very short period of time. For example, we learned about hypersurfaces in a tropical semiring, but at first we had no knowledge of what a hypersurface is in classical algebraic geometry. Somewhere along the lines, we began to pick up a rough idea of the concepts, such as the idea that a function "being equal to zero" in classical algebraic geometry is analogous to a maximum being attained more than once in tropical algebraic geometry, but we never really learned enough to grow comfortable with the concepts and even be able to visualize the fans (beyond the n = 4 case, that is). Above all, we learned that it is not always possible to study all the prerequisite material first and then do research, since we don't always know what we'll need. We have to discover the missing prerequisite material along the way.
+
+{\large \bf How can we make 2016 CRP mathematics even better?} 
+This is the first trial year of the CRP Mathematics program.  We would appreciate any suggestions you might have for improving the program in 2016.
+
+As I mentioned above, as undergraduates in particular, we lacked a lot of essential background knowledge. At Georgia Tech, for example, no algebraic geometry course is even offered until graduate school. It would have been better to have been given more guidance about what concepts to study in order to facilitate research. For instance, I didn't find out until very late in the game about the connection between the four-point condition (and its generalization) and the square root of the determinant of a skew-symmetric matrix. I found the single provided article to be insufficient for gaining the necessary grounding to begin research.
+
+In addition, I would suggest lengthening the time for the project to two months and including two or three smaller papers leading up to the final paper. As it was, we had a "mission" near the middle of the project, but we did not know about this until about three days before it was due, so it just created a small burst of activity rather than facilitating sustained effort over the course of the project. Having the pressure of intermediate deadlines would probably be more fruitful if we knew about those deadlines, and could plan for them, long in advance.
+
+Finally, the project should be held in January and February, not March. By March, we have far too much work for our other classes. We found ourselves scrambling at every deadline just to post anything. We would have much more time in January to begin the project and gain a strong background in the material as we go.
+
+\end{document}
